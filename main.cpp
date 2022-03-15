@@ -4,7 +4,7 @@
 template<typename T1, typename T2>
 class Register {
  private:
-  std::map<T1, T2> _register{};
+  std::multimap<T1, T2> _register{};
   T1 key;
   T2 value;
 
@@ -46,13 +46,15 @@ class Register {
 
 int main() {
   Register<int, int> reg;
-  reg.add();
-  reg.print();
+  for (int i = 0; i < 2; i++) {    //чтобы посмотреть на 2 одинаковых ключа
+    reg.add();
+    reg.print();
 
-  reg.remove();
-  reg.print();
+    reg.remove();
+    reg.print();
 
-  reg.find();
+    reg.find();
+  }
 
   Register<std::string, double> reg_2;
   reg_2.add();
