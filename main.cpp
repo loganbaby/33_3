@@ -5,11 +5,10 @@ template<typename T1, typename T2>
 class Register {
  private:
   std::multimap<T1, T2> _register{};
-  T1 key;
-  T2 value;
 
  public:
-  inline void add() {
+
+  inline void add(T1& key, T2& value) {
     std::cout << "Enter the key to add: ";
     std::cin >> key;
 
@@ -19,7 +18,7 @@ class Register {
     _register.insert(std::make_pair(key, value));
   }
 
-  inline void remove() {
+  inline void remove(T1& key) {
     std::cout << "Enter the key to remove: ";
     std::cin >> key;
 
@@ -32,7 +31,7 @@ class Register {
     }
   }
 
-  inline void find() {
+  inline void find(T1& key) {
     std::cout << "Enter the key to find: ";
     std::cin >> key;
 
@@ -47,21 +46,27 @@ class Register {
 int main() {
   Register<int, int> reg;
   for (int i = 0; i < 2; i++) {    //чтобы посмотреть на 2 одинаковых ключа
-    reg.add();
+    int key = 0;
+    int value = 0;
+
+    reg.add(key, value);
     reg.print();
 
-    reg.remove();
+    reg.remove(key);
     reg.print();
 
-    reg.find();
+    reg.find(key);
   }
 
   Register<std::string, double> reg_2;
-  reg_2.add();
+  std::string key = "";
+  double value = 0;
+
+  reg_2.add(key, value);
   reg_2.print();
 
-  reg_2.remove();
+  reg_2.remove(key);
   reg_2.print();
 
-  reg_2.find();
+  reg_2.find(key);
 }
